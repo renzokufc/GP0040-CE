@@ -5,6 +5,7 @@
 #include "storagemanager.h" // Global Managers
 #include "addonmanager.h"
 #include "usbhostmanager.h"
+#include "peripheralmanager.h"
 
 #include "addons/board_led.h"
 #include "addons/buzzerspeaker.h"
@@ -25,6 +26,8 @@ GP2040Aux::~GP2040Aux() {
 }
 
 void GP2040Aux::setup() {
+	PeripheralManager::getInstance().initI2C();
+	PeripheralManager::getInstance().initUSB();
 	InputHistoryAddon* inputHistoryAddon = new InputHistoryAddon();
 	I2CDisplayAddon* i2CDisplayAddon = new I2CDisplayAddon();
 
